@@ -39,7 +39,12 @@ function hideGameElements() {
     let score = document.querySelector(".score");
     score.textContent = "0:0";
 
-    // TODO: Reset hands
+    // Reset hands
+    let playerHand = document.querySelector(".player-hand");
+    let computerHand = document.querySelector(".computer-hand");
+
+    playerHand.textContent = "?";
+    computerHand.textContent = "?";
 }
 
 function loadWelcomeElements() {
@@ -96,7 +101,7 @@ function updateHand(computerChoice, userChoice) {
 
     computerHandImage.setAttribute("src", `images/hand-${computerChoice}.png`);
     computerHandImage.setAttribute("draggable", "false");
-    computerHandImage.classList.add("hand-image");
+    computerHandImage.classList.add("hand-image")
 
     // Append the image elements to their respective containers
     playerHand.appendChild(playerHandImage);
