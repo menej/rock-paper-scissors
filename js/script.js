@@ -27,13 +27,19 @@ function hideGameElements() {
     let sectionGame = document.querySelector(".section-game");
     sectionGame.classList.add("hidden");
 
-    // Reset elements
+    // Reset score variables
     userScore = 0;
     computerScore = 0;
+
+    // Reset game status text
     let gameStatus = document.querySelector(".game-status");
     gameStatus.textContent = "PICK YOUR OPTION";
+
+    // Reset score text
     let score = document.querySelector(".score");
     score.textContent = "0:0";
+
+    // TODO: Reset hands
 }
 
 function loadWelcomeElements() {
@@ -75,6 +81,28 @@ function updateScore() {
     score.textContent = `${userScore}:${computerScore}`;
 }
 
+function updateHand(computerChoice, userChoice) {
+    let playerHand = document.querySelector(".player-hand");
+    let computerHand = document.querySelector(".computer-hand");
+
+    playerHand.textContent = "";
+    computerHand.textContent = "";
+
+    let playerHandImage = document.createElement("img");
+    let computerHandImage = document.createElement("img");
+    playerHandImage.setAttribute("src", `images/hand-${userChoice}.png`);
+    playerHandImage.setAttribute("draggable", "false");
+    playerHandImage.classList.add("hand-image");
+
+    computerHandImage.setAttribute("src", `images/hand-${computerChoice}.png`);
+    computerHandImage.setAttribute("draggable", "false");
+    computerHandImage.classList.add("hand-image");
+
+    // Append the image elements to their respective containers
+    playerHand.appendChild(playerHandImage);
+    computerHand.appendChild(computerHandImage);
+}
+
 function playRound(e) {
     let computerChoice = getComputerChoice();
     let userChoice = e.target.getAttribute("data-hand");
@@ -89,6 +117,9 @@ function playRound(e) {
 
         // Update score
         updateScore();
+
+        // Update players hands
+        updateHand(computerChoice, userChoice);
 
         // Check if any one of them won the game
         checkWinnerGame();

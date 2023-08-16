@@ -103,3 +103,8 @@ body {
     margin-top: 60px;
     font-weight: bold;
 }
+
+.hand-image {
+    height: auto;
+    width: 100px;
+}
