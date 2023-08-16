@@ -3,9 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="section-intro">
+    <p class="welcome-text">Let's play some Rock Papers Scissors</p>
+    <div class="container-play-button">
+      <button class="play-button">Play</button>
+    </div>
+  </div>
 
-<script src="script.js"></script>
+  <div class="section-game hidden">
+    <div class="container-score">
+      <p>YOU</p>
+      <p>0:0</p>
+      <p>PC</p>
+    </div>
+
+    <p class="game-status">PICK YOUR OPTION</p>
+
+    <div class="container-hands">
+      <div class="player-hand"><p>?</p></div>
+      <div class="computer-hand"><p>?</p></div>
+    </div>
+
+    <div class="container-options">
+      <div data-hand="rock"><img src="images/hand-fist.png" alt="Rock" draggable="false"></div>
+      <div data-hand="paper"><img src="images/hand-paper.png" alt="Paper" draggable="false"></div>
+      <div data-hand="scissors"><img src="images/hand-scissors.png" alt="Scissors" draggable="false"></div>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
 </body>
 </html>
