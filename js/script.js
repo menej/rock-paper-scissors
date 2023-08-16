@@ -27,10 +27,13 @@ function hideGameElements() {
     let sectionGame = document.querySelector(".section-game");
     sectionGame.classList.add("hidden");
 
+    // Reset elements
     userScore = 0;
     computerScore = 0;
     let gameStatus = document.querySelector(".game-status");
     gameStatus.textContent = "PICK YOUR OPTION";
+    let score = document.querySelector(".score");
+    score.textContent = "0:0";
 }
 
 function loadWelcomeElements() {
@@ -67,6 +70,11 @@ function checkWinnerGame() {
     }
 }
 
+function updateScore() {
+    let score = document.querySelector(".score");
+    score.textContent = `${userScore}:${computerScore}`;
+}
+
 function playRound(e) {
     let computerChoice = getComputerChoice();
     let userChoice = e.target.getAttribute("data-hand");
@@ -76,9 +84,13 @@ function playRound(e) {
     if (!userChoice) {
         alert("The option provided is invalid, please try again!");
     } else {
+        // Check if any one of them won the round
         checkWinnerRound(computerChoice, userChoice);
 
-        // Check if any one of them won
+        // Update score
+        updateScore();
+
+        // Check if any one of them won the game
         checkWinnerGame();
     }
 }
